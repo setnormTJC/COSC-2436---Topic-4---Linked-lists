@@ -7,10 +7,22 @@ struct Node
 {
     int data; 
     Node* link; 
+
+    /*prints the ADDRESS of the node*/
+    friend ostream& operator << (ostream& os, Node n);
 };
+
+ostream& operator << (ostream& os, Node n)
+{
+    os << &n << endl; 
+
+    return os; 
+}
+
 
 int main()
 {
+
 
     //int a = 3; 
     //cout << &a << endl; 
@@ -35,6 +47,10 @@ int main()
     cout << "firstNode.link.data ...?" << (*firstNode.link).data << endl; 
     //another way of doing line 35: 
     cout << "firstNode.link->data ...?" << firstNode.link->data << endl;
+
+    cout << "secondNode (overloaded << prints address of secondNode): " << secondNode << endl;
+
+    cout << "firstNode.link: " << firstNode.link << endl; 
 
 
     //cout << "Hello World";

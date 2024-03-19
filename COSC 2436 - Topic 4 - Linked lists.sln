@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "COSC 2436 - Topic 4 - Linked lists", "COSC 2436 - Topic 4 - Linked lists\COSC 2436 - Topic 4 - Linked lists.vcxproj", "{FC2ED1D4-3D93-4AB7-AFE6-3F341D7A0C96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mar19-beginningLinkedLists", "Mar19-beginningLinkedLists\Mar19-beginningLinkedLists.vcxproj", "{F411D802-485E-474B-911F-B71417640034}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{FC2ED1D4-3D93-4AB7-AFE6-3F341D7A0C96}.Release|x64.Build.0 = Release|x64
 		{FC2ED1D4-3D93-4AB7-AFE6-3F341D7A0C96}.Release|x86.ActiveCfg = Release|Win32
 		{FC2ED1D4-3D93-4AB7-AFE6-3F341D7A0C96}.Release|x86.Build.0 = Release|Win32
+		{F411D802-485E-474B-911F-B71417640034}.Debug|x64.ActiveCfg = Debug|x64
+		{F411D802-485E-474B-911F-B71417640034}.Debug|x64.Build.0 = Debug|x64
+		{F411D802-485E-474B-911F-B71417640034}.Debug|x86.ActiveCfg = Debug|Win32
+		{F411D802-485E-474B-911F-B71417640034}.Debug|x86.Build.0 = Debug|Win32
+		{F411D802-485E-474B-911F-B71417640034}.Release|x64.ActiveCfg = Release|x64
+		{F411D802-485E-474B-911F-B71417640034}.Release|x64.Build.0 = Release|x64
+		{F411D802-485E-474B-911F-B71417640034}.Release|x86.ActiveCfg = Release|Win32
+		{F411D802-485E-474B-911F-B71417640034}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
