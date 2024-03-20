@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fc2ed1d4-3d93-4ab7-afe6-3f341d7a0c96}</ProjectGuid>
-    <RootNamespace>COSC_2436___Topic_4___Linked_lists</RootNamespace>
+    <ProjectGuid>{c23637ba-e4b8-48ff-b382-b5cdabd88048}</ProjectGuid>
+    <RootNamespace>Mar20_continuingLinkedLists</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,7 +128,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Mar18.cpp" />
+    <ClCompile Include="Mar20.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

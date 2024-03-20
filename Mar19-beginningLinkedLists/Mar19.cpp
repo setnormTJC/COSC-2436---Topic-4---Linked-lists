@@ -9,22 +9,48 @@ struct Node
     Node* link; 
 };
 
+template<typename T> 
+void traverseList(Node<T>& startNode)
+{
+    Node<T>* current = &startNode; 
+
+    while (current != nullptr)
+    {
+        cout << current->data << "\t" << current << endl;
+        current = current->link; 
+    }
+}
+
 int main()
 {
-    Node<string> firstNode; 
-    firstNode.data = "PI";
+    Node<string> head; 
+    head.data = "PI";
     //quizQuestion2FirstNode.link = nullptr; //explicitly iniitalizing 
+
+    Node<string> current = head; 
 
 
     Node<string> secondNode;
     secondNode.data = "Euler's number"; 
-    secondNode.link = nullptr; 
+    //secondNode.link = nullptr; 
 
     //update first node's link: 
-    firstNode.link = &secondNode; 
+    head.link = &secondNode; 
+
+    //cout << head.link->data << endl; 
 
 
-    cout << firstNode.link->link << endl; 
+    Node<string> tail; 
+    tail.data = "golden ratio";
+    tail.link = nullptr; 
+
+    secondNode.link = &tail; 
+
+
+    cout << "Q1: " << head.link->link << endl; 
+    cout << "Q2: " << head.link->data << endl; 
+
+    traverseList(head); 
 
 
    /* Node firstNode;
