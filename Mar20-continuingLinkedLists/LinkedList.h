@@ -54,6 +54,15 @@ public:
         newNode->next = first; //puts newNode before first
         
         first = newNode;
+
+
+
+        /*
+        * Insert the last bit!
+        */
+
+
+
     }
 
     int length() { return nodeCount; }

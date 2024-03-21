@@ -9,78 +9,163 @@ struct Node
     Node* link; 
 };
 
-template<typename T> 
-void traverseList(Node<T>& startNode)
-{
-    Node<T>* current = &startNode; 
 
-    while (current != nullptr)
+
+template<typename T> 
+class LinkedList
+{
+    Node <T>* first; //a pointer is a variable that holds a memory address
+    Node<T>* last; 
+    int nodeCount; 
+
+public: 
+    /*creates an EMPTY linked list*/
+    LinkedList()
     {
-        cout << current->data << "\t" << current << endl;
-        current = current->link; 
+        cout << "Default constructor of linked list called!\n";
+        first = nullptr; 
+        last = nullptr; 
+        nodeCount = 0; 
     }
-}
+
+    void insertFirst(const T& valueToInsert)
+    {
+        Node<T>* newNode = new Node<T>; //allocates space for a new node 
+
+        newNode->data = valueToInsert; 
+        newNode->link = first; 
+
+        first = newNode; 
+
+        if (last == NULL)
+        {
+            last = newNode;
+            //if newNode is the only node,
+            //it is both first and last
+        }
+        nodeCount++; 
+    }
+
+    int length() 
+    {
+        return nodeCount; 
+    }
+
+    void traverseList()
+    {
+        Node<string>* currentNode; //this is similar to int i in a for loop 
+        currentNode = first; //i = 1
+        while (currentNode != nullptr)
+        {
+            cout << currentNode->data << endl;
+            currentNode = currentNode->link; //this is similar to i++ in a for loop 
+        }
+    }
+};
 
 int main()
 {
-    Node<string> head; 
-    head.data = "PI";
-    //quizQuestion2FirstNode.link = nullptr; //explicitly iniitalizing 
 
-    Node<string> current = head; 
+    LinkedList <string> firstAirport; //this will call the default constructor 
+    firstAirport.insertFirst("LAX");
+    firstAirport.insertFirst("Atlanta");
+    firstAirport.insertFirst("Chicago");
 
 
-    Node<string> secondNode;
-    secondNode.data = "Euler's number"; 
+    cout << "Was the number of nodes updated correctly? " << endl; 
+    cout << firstAirport.length() << endl; 
+
+    firstAirport.traverseList(); 
+
+    //Node<string>* firstNode; 
+
+    //cout << firstNode.link->data << endl; 
+
+    //Node<string> firstAirport;
+
+    //firstAirport.data = "Los Angeles"; 
+    //firstAirport.link = nullptr; 
+
+    //Node<string> secondAirport; 
+    //secondAirport.data = "Atlanta";
+    //
+
+    //firstAirport.link = &secondAirport; 
+
+    //Node<string> thirdAirport; 
+    //thirdAirport.data = "Chicago";
+
+    //thirdAirport.link = nullptr; 
+
+    //secondAirport.link = &thirdAirport; 
+
+    ////print the nodes in order: 
+    //traverseList(firstAirport); 
+    /*
+    cout << firstAirport.data << endl; 
+    cout << secondAirport.data << endl; 
+    cout << thirdAirport.data << endl; 
+    */
+    
+
+    //Node<string> head; 
+    //head.data = "PI";
+    ////quizQuestion2FirstNode.link = nullptr; //explicitly iniitalizing 
+
+    //Node<string> current = head; 
+
+
+    //Node<string> secondNode;
+    //secondNode.data = "Euler's number"; 
     //secondNode.link = nullptr; 
 
     //update first node's link: 
-    head.link = &secondNode; 
+   // head.link = &secondNode; 
 
-    //cout << head.link->data << endl; 
-
-
-    Node<string> tail; 
-    tail.data = "golden ratio";
-    tail.link = nullptr; 
-
-    secondNode.link = &tail; 
+   // //cout << head.link->data << endl; 
 
 
-    cout << "Q1: " << head.link->link << endl; 
-    cout << "Q2: " << head.link->data << endl; 
+   // Node<string> tail; 
+   // tail.data = "golden ratio";
+   // tail.link = nullptr; 
 
-    traverseList(head); 
-
-
-   /* Node firstNode;
-    firstNode.data = 1; 
-    firstNode.link = nullptr; //nullptr is 0x0000 0000 0000 0000 
-
-    Node secondNode; 
-    secondNode.data = -42; 
-    secondNode.link = nullptr; 
-
-    //update the link of firstNode
-    firstNode.link = &secondNode; 
-
-    cout << "first node's data: " << firstNode.data << endl; 
-    cout << "SECOND node's data: " << secondNode.data << endl; 
-    
-    cout << "a less direct approach to getting second node's data: "
-        << firstNode.link->data << endl; 
+   // secondNode.link = &tail; 
 
 
-    Node thirdNode; 
-    thirdNode.data = 12345; 
-    thirdNode.link = nullptr; 
+   // cout << "Q1: " << head.link->link << endl; 
+   // cout << "Q2: " << head.link->data << endl; 
 
-    secondNode.link = &thirdNode;
+   // traverseList(head); 
+
+
+   //Node firstNode;
+   // firstNode.data = 1; 
+   // firstNode.link = nullptr; //nullptr is 0x0000 0000 0000 0000 
+
+   // Node secondNode; 
+   // secondNode.data = -42; 
+   // secondNode.link = nullptr; 
+
+   // //update the link of firstNode
+   // firstNode.link = &secondNode; 
+
+   // cout << "first node's data: " << firstNode.data << endl; 
+   // cout << "SECOND node's data: " << secondNode.data << endl; 
+   // 
+   // cout << "a less direct approach to getting second node's data: "
+   //     << firstNode.link->data << endl; 
+
+
+    //Node thirdNode; 
+    //thirdAirport.data = 12345; 
+    //thirdAirport.link = nullptr; 
+
+    //secondNode.link = &thirdAirport;
     //int a = 32; 
 
 
-    int thirdNodesData = firstNode.link->link->data; 
-    cout << "12345? " << thirdNodesData << endl; 
+    //int thirdNodesData = firstNode.link->link->data; 
+    //cout << "12345? " << thirdNodesData << endl; 
     //int* pointerToA = &a; 
 
     //cout << pointerToA << "\t" << *pointerToA << endl; 
@@ -89,7 +174,7 @@ int main()
     
     //cout << &nullptr << endl;// NULL << endl;
    
-   */
+   
 
     
     return 0;
