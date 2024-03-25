@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "comparisonOfLinkedLists-toA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mar20-continuingLinkedLists", "Mar20-continuingLinkedLists\Mar20-continuingLinkedLists.vcxproj", "{C23637BA-E4B8-48FF-B382-B5CDABD88048}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mar24-practiceLecture", "Mar24-practiceLecture\Mar24-practiceLecture.vcxproj", "{A5010E23-35B9-4702-8A91-ACAD410C8069}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{C23637BA-E4B8-48FF-B382-B5CDABD88048}.Release|x64.Build.0 = Release|x64
 		{C23637BA-E4B8-48FF-B382-B5CDABD88048}.Release|x86.ActiveCfg = Release|Win32
 		{C23637BA-E4B8-48FF-B382-B5CDABD88048}.Release|x86.Build.0 = Release|Win32
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Debug|x64.ActiveCfg = Debug|x64
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Debug|x64.Build.0 = Debug|x64
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Debug|x86.ActiveCfg = Debug|Win32
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Debug|x86.Build.0 = Debug|Win32
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Release|x64.ActiveCfg = Release|x64
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Release|x64.Build.0 = Release|x64
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Release|x86.ActiveCfg = Release|Win32
+		{A5010E23-35B9-4702-8A91-ACAD410C8069}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
