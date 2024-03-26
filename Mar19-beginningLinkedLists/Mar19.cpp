@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include<forward_list>
+//Node1 -> Node2 
 using namespace std;
 
 template<typename T> 
@@ -53,7 +55,7 @@ public:
 
     void traverseList()
     {
-        Node<string>* currentNode; //this is similar to int i in a for loop 
+        Node<T>* currentNode; //this is similar to int i in a for loop 
         currentNode = first; //i = 1
         while (currentNode != nullptr)
         {
@@ -61,11 +63,124 @@ public:
             currentNode = currentNode->link; //this is similar to i++ in a for loop 
         }
     }
-};
+
+    void insertAfter(Node<T>* previous, T insertedValue)
+    {
+        Node<T>* newNode = new Node<T>;
+        newNode->data = insertedValue;
+
+        //Diagram on next slides walks through two lines below:
+        //previous->link = newNode;
+        newNode->link = previous->link;
+        previous->link = newNode;
+    }
+
+
+    Node<T>* getNode(int nodePosition)
+    {
+        Node<T>* current = new Node<T>;
+        current = first;
+        int i = 0;
+        while (i < nodePosition)
+        {
+            current = current->link;
+            i++;
+        }
+        return current;
+    }
+
+    bool search(const T& targetValue)
+    {
+        Node<T>* currentNode = first; 
+        bool found = false; 
+
+        while (currentNode != nullptr && !found)
+        {
+            if (currentNode->data == targetValue)
+            {
+                found = true; 
+            }
+
+            else
+            {
+                currentNode = currentNode->link;
+            }
+        } //end while
+
+        return found; 
+    }
+
+    void deleteNodeWithInfo(const T& infoToDelete)
+    {
+        Node<T>* current;
+        
+        Node<T>* temp;
+
+        bool found;
+
+        if (first->info == infoToDelete)
+        {
+            found = true;
+            current = first;
+            first = first->link;
+            delete current;
+            nodeCount--;
+        }
+
+        else
+        {
+            found = false; //so far
+            temp = first;
+
+            current = first->link; //advance to next node
+
+            //...to be continued
+
+        } //end else (target value is NOT in the first node) 
+    }
+}; //end `LInkedList` class def: 
 
 int main()
 {
 
+    //forward_list<int> flObject; 
+    //flObject.
+
+    LinkedList<int>* pointerToFrontOfList = new LinkedList<int>; 
+    pointerToFrontOfList->insertFirst(5);
+    pointerToFrontOfList->insertFirst(4);
+    pointerToFrontOfList->insertFirst(2);
+    pointerToFrontOfList->insertFirst(1);
+
+    cout << "The contents of the integer list BEFORE inserting in the middle: " << endl;
+    pointerToFrontOfList->traverseList(); 
+    
+    auto previousNode = pointerToFrontOfList->getNode(1);
+    pointerToFrontOfList->insertAfter(previousNode, 3);
+        
+   cout << "\n\nThe contents of the integer list AFTER inserting in the middle: " << endl;
+   pointerToFrontOfList->traverseList(); 
+
+
+   int targetElement = 1; //an "edge case" (a term in software development) 
+                        //
+   cout << "Is the element " << targetElement << " in this list? " << endl; 
+   cout << std::boolalpha; 
+   cout << pointerToFrontOfList->search(targetElement) << endl; 
+   //std::find()
+   
+   cout << "can we successfully erase the NODe containing the value 5? \n";
+
+   pointerToFrontOfList->deleteNodeWithInfo(5); 
+
+   pointerToFrontOfList->traverseList(); 
+
+
+
+
+    //firstNode.
+
+/*
     LinkedList <string> firstAirport; //this will call the default constructor 
     firstAirport.insertFirst("LAX");
     firstAirport.insertFirst("Atlanta");
