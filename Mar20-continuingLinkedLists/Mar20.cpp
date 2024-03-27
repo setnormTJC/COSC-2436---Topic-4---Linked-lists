@@ -2,6 +2,8 @@
 
 #include<forward_list>
 
+#include<xtree>
+
 using namespace std;
 
 
@@ -20,7 +22,6 @@ class LinkedList
     Node<T>* last;
     int nodeCount; //the number of nodes in the list 
 
-
     //member functions 
 
 public:
@@ -33,7 +34,8 @@ public:
         nodeCount = 0;
     }
 
-    void print() {
+    //Linked(T value)
+    void traverse() {
         Node<T>* current;
         current = first;
         while (current != NULL) {
@@ -44,8 +46,6 @@ public:
 
 
     void insertFirst(const T& newInfo)
-        //pass info by constant reference
-        //alternative approach: create a Node object and pass it in
     {
         Node<T>* newNode = new Node<T>;
 
@@ -58,15 +58,7 @@ public:
         {
             last = newNode; 
         }
-
-
         nodeCount++; 
-        /*
-        * Insert the last bit!
-        */
-
-
-
     }
 
     void insertAfter(Node<T>* previous, const T& insertedValue)
@@ -79,13 +71,11 @@ public:
         newNode->next = previous->next;
         previous->next = newNode;
 
-
         nodeCount++; 
     }
 
     Node<T>* getNode(int nodePosition)
     {
-
         Node<T>* current = new Node<T>;
         current = first;
         int i = 0;
@@ -101,7 +91,6 @@ public:
     {
         return nodeCount;
     }
-
 
     bool search(const T& valueToFind)
         //alternative to bool: return the node object or position?
@@ -125,10 +114,83 @@ public:
 
         return found; 
     }
+
+    //insert other "desirable" member functions? 
+    void deleteNodeWithInfo(T infoToDelete)
+    {
+        Node<T>* current;
+        Node<T>* temp;
+        bool found; //if not found - we might display a message to that effect
+        
+        if (first->data== infoToDelete)
+        {
+            found = true;
+            current = first;
+            first = first->next;
+            delete current;
+            nodeCount--;
+        }
+
+        else //info is NOT in first node
+            // OR it is not in the list at all
+        {
+            found = false; //so far
+            temp = first;
+            current = first->next;
+            while (current != NULL and !found)
+            {
+                if (current->data != infoToDelete) {
+                    temp = current;//advance both along the “chain”
+                    current = current->next;
+                }
+                else 
+                {
+                    found = true;
+                }
+            } //end while 
+
+            if (found)
+            { //remember, found is a boolean type
+                temp->next = current->next;
+
+                if (last == current)
+                    //make sure last doesn't get “lost”
+                {
+                    last = temp;
+                }
+                delete current;
+                nodeCount--;
+            }
+            else
+            {
+                cout << "The node value " << infoToDelete << " is not in the list!\n";
+            }
+        } //end of else (data is not in first node (or not in the list at all!))
+    } //end func. def. 
+
+
+    ~LinkedList()
+    {
+        cout << "Calling destructor for list[0] = " << first->info << endl;
+        Node<T>* temp;
+        while (first != nullptr)
+        {
+            temp = first;
+            first = first->link;
+            delete temp;
+        }
+        last = nullptr;
+        nodeCount = 0;
+    }
 };
 
 int main()
 {
+    forward_list<int> fl; 
+    
+    //fl.erase_after()
+    //fl.erase_after(;
+    
 
     LinkedList<int> ll; 
     ll.insertFirst(5); 
@@ -142,54 +204,17 @@ int main()
 
     cout << "Was the insertion successful?" << endl; 
     cout << ll.length() << endl; 
-    ll.print(); 
+    ll.traverse(); 
 
 
     cout << "Is the number 1 in the list? " << endl; 
     cout << std::boolalpha; 
     cout << ll.search(1) << endl; 
 
-    //std::forward_list<int> fl; 
-    //fl.insert_after
-    //LinkedList<string>* airportList = new LinkedList<string> ; 
-
-    //cout << "the initial length of the list is: " << airportList->length() << endl;
-    //airportList->print();
-
-    //airportList->insertFirst("LAX");
-    //airportList->insertFirst("TOY");
-    //airportList->insertFirst("LAHORE");
-
-    //cout << "After calling `insertFirst` thrice: " << endl; 
-
-    //airportList->print();
-
-    //cout << "WAS the size (AKA: length or number of nodes) updated? "
-    //    << airportList->length() << endl; 
-
-
-    //Node<string>  firstNode; 
-    //firstNode.data = "LAX"; 
-    //firstNode.next = nullptr; 
-
-    //Node<string> secondNode; 
-    //secondNode.data = "TOY"; 
-    //secondNode.next = nullptr; 
-
-    //firstNode.next = &secondNode; 
-
-
-    //add a third Node (AKA: airport) to this singly-linked list and then TRAVERSE!
-    //Node<string> thirdNode; 
-    //thirdNode.data = "Lahore"; 
-    //thirdNode.next = nullptr; 
-
-    //secondNode.next = &thirdNode; 
-
-
-    //traverseList(firstNode); 
-
-
+    const int valueToDelete = -5; 
+    cout << "\n\n\ntesting deletion of value: " << valueToDelete << endl; 
+    ll.deleteNodeWithInfo(valueToDelete); 
+    ll.traverse(); 
 
 
     return 0;

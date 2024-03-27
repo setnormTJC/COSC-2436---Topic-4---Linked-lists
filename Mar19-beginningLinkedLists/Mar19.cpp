@@ -118,12 +118,16 @@ public:
 
         bool found;
 
-        if (first->info == infoToDelete)
+        if (first->data == infoToDelete)
         {
             found = true;
             current = first;
             first = first->link;
+
             delete current;
+            //cout << "!!!!" << current << endl;
+            //current = current->link; 
+
             nodeCount--;
         }
 
@@ -171,7 +175,7 @@ int main()
    
    cout << "can we successfully erase the NODe containing the value 5? \n";
 
-   pointerToFrontOfList->deleteNodeWithInfo(5); 
+   pointerToFrontOfList->deleteNodeWithInfo(1); 
 
    pointerToFrontOfList->traverseList(); 
 
