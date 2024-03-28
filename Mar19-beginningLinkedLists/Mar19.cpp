@@ -113,9 +113,7 @@ public:
     void deleteNodeWithInfo(const T& infoToDelete)
     {
         Node<T>* current;
-        
         Node<T>* temp;
-
         bool found;
 
         if (first->data == infoToDelete)
@@ -125,20 +123,49 @@ public:
             first = first->link;
 
             delete current;
-            //cout << "!!!!" << current << endl;
-            //current = current->link; 
 
             nodeCount--;
         }
 
-        else
+        else //this means that the data we want to delete is NOT in 
+            //the first node (and this includes the possiblity that the data
+            //is not in the list at all!) 
         {
             found = false; //so far
             temp = first;
 
             current = first->link; //advance to next node
 
-            //...to be continued
+            while (current != NULL and !found) {
+                if (current->data != infoToDelete) {
+                    temp = current;//advance both along the “chain”
+                    current = current->link;
+                }
+                else {
+                    found = true;
+                }
+            } //end while
+
+            if (found)
+            {
+
+                if (last == current)
+                    //make sure last doesn't get “lost”
+                {
+                    last = temp;
+                }
+
+
+                delete current;
+
+                nodeCount--;
+            }
+
+            else
+            {
+                cout << "The value " << infoToDelete << " was NOT found :(\n";
+            }
+
 
         } //end else (target value is NOT in the first node) 
     }
@@ -173,13 +200,14 @@ int main()
    cout << pointerToFrontOfList->search(targetElement) << endl; 
    //std::find()
    
-   cout << "can we successfully erase the NODe containing the value 5? \n";
 
-   pointerToFrontOfList->deleteNodeWithInfo(1); 
+   const int VALUE_TO_DELETE = 4; 
+   cout << "can we successfully erase the NODe containing the value"
+       << VALUE_TO_DELETE << " ?\n ";
+
+   pointerToFrontOfList->deleteNodeWithInfo(VALUE_TO_DELETE); //deletes FRONT node
 
    pointerToFrontOfList->traverseList(); 
-
-
 
 
     //firstNode.
